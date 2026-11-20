@@ -1,0 +1,19 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "metalsourcing",
+	"main": "src/index.js",
+	"compatibility_date": "2026-11-01",
+	"assets": {
+		"directory": "./public",
+		"binding": "ASSETS",
+		"run_worker_first": ["/", "/catalog", "/search", "/custom", "/request", "/p/*", "/admin", "/admin/*", "/api/*"]
+	},
+	// The database is created on the first deploy (no ID needed) and its tables on the first request.
+	"d1_databases": [
+		{ "binding": "DB", "database_name": "metalsourcing" }
+	],
+	"observability": { "enabled": true }
+	// E-mail for new requests (after Email Routing is on for metalsourcing.ca):
+	// "send_email": [{ "name": "MAILER", "destination_address": "you@example.com" }],
+	// "vars": { "MAIL_FROM": "requests@metalsourcing.ca", "MAIL_TO": "you@example.com" }
+}
